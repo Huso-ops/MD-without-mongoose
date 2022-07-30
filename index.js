@@ -23,8 +23,7 @@ app.get("/", (req, res) => {
     }
   });
 
-
-  dotenv.config();
+dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.options("*", cors());
@@ -38,6 +37,7 @@ MongoClient
   .connect(process.env.MONGO_URL,
      { useNewUrlParser: true, useUnifiedTopology: true },
     function (err, client) {
+      
       db = client.db()
    
   console.log("mongodb Connect")
@@ -45,22 +45,6 @@ MongoClient
   )
 
 
-/*
-let db;
-
-let connectionString = "mongodb+srv://huso:3rcGPzoUA6UR6sSi@nestjs.77vms.mongodb.net/redis?retryWrites=true&w=majority";
-
-MongoClient.connect(
-    connectionString,
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    function (err, client) {
-      db = client.db()
-   
-  console.log("mongodb Connect")
-    }
-  )
-
-  */
 
 
   app.listen(process.env.PORT || 8080, () => {
